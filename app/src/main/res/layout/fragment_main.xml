@@ -11,31 +11,28 @@
     tools:context="com.burnevsky.appbook.MainActivityFragment"
     tools:showIn="@layout/activity_main">
 
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:text="Hello World!"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:textAlignment="center"
+        android:layout_alignParentTop="true"
+        android:id="@+id/txtFilter" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Hello World!"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-            android:textAlignment="center" />
+    <android.support.v7.widget.GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/gridAlphabet"
+        android:layout_alignParentBottom="true" />
 
-        <GridView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/gridAlphabet"
-            android:stretchMode="spacingWidthUniform"
-            android:horizontalSpacing="16dp"
-            android:verticalSpacing="8dp" />
-
-        <GridView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/gridAppIcons" />
-
-    </LinearLayout>
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:horizontalSpacing="16dp"
+        android:verticalSpacing="8dp"
+        android:id="@+id/gridAppIcons"
+        android:layout_above="@id/gridAlphabet"
+        android:layout_below="@id/txtFilter" />
 
 </RelativeLayout>

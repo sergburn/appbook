@@ -11,13 +11,18 @@
         android:src="@android:drawable/ic_lock_idle_alarm"
         android:id="@+id/ali_imgAppIcon"
         android:minHeight="@android:dimen/app_icon_size"
-        android:maxHeight="@android:dimen/app_icon_size" />
+        android:maxHeight="@android:dimen/app_icon_size"
+        android:scaleType="fitCenter" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/hello_blank_fragment"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        android:id="@+id/ali_txtAppName" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Menu"
+        android:id="@+id/ali_txtAppName"
+        android:lines="1"
+        android:maxLines="1"
+        android:textAlignment="center"
+        android:ellipsize="end" />
 
 </LinearLayout>

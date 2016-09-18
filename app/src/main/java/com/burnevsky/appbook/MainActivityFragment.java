@@ -1,6 +1,7 @@
 package com.burnevsky.appbook;
 
 import android.app.ListActivity;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
@@ -41,6 +42,7 @@ public class MainActivityFragment extends Fragment
     List<ResolveInfo> mAllApps = new ArrayList<>();
 
     GridView mAppGrid;
+    Drawable mDefaultIcon;
 
     public MainActivityFragment()
     {
@@ -59,11 +61,20 @@ public class MainActivityFragment extends Fragment
         super.onActivityCreated(savedInstanceState);
 
         mPackageManager = getContext().getPackageManager();
+        mDefaultIcon = mPackageManager.getDefaultActivityIcon();
 
         Intent launcher = new Intent(Intent.ACTION_MAIN);
         launcher.addCategory(Intent.CATEGORY_LAUNCHER);
 
-        List<ResolveInfo> activities = mPackageManager.queryIntentActivityOptions(null, null, launcher, PackageManager.GET_RESOLVED_FILTER);
+        ComponentName me = new ComponentName(
+            getActivity().getApplicationContext().getPackageName(),
+            MainActivity.class.getName());
+
+        List<ResolveInfo> activities = mPackageManager.queryIntentActivityOptions(
+                me,
+                null,
+                launcher,
+                PackageManager.GET_RESOLVED_FILTER);
 
         for (ResolveInfo info: activities)
         {
@@ -142,6 +153,7 @@ public class MainActivityFragment extends Fragment
             TreeMap<String, Object> row = new TreeMap<>();
             row.put("label", appInfo.loadLabel(mPackageManager));
             row.put("icon", appInfo.loadIcon(mPackageManager));
+            //row.put("icon", mDefaultIcon);
             mAppListData.add(row);
         }
 

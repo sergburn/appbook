@@ -27,7 +27,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/gridAlphabet"
-            android:padding="8dp" />
+            android:stretchMode="spacingWidthUniform"
+            android:horizontalSpacing="16dp"
+            android:verticalSpacing="8dp" />
 
         <GridView
             android:layout_width="match_parent"
